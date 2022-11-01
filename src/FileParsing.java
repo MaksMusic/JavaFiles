@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 //получить данные из файла и поместить в лист
 
-public class GetLineFromFile {
+public class FileParsing {
     public static void main(String[] args) {
         ArrayList<Year>  years = new ArrayList<>(); //куда записать данные
         Path paths = Paths.get("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\text.txt");

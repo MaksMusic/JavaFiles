@@ -11,7 +11,7 @@ public class AddFile {
             writer.write("name:Tomas , age:21 ");    //добавить строку
             writer.flush();         // добавить все изменения в файл
 
-            writer.append('=');     //добавить сивол на ту же строку
+            writer.append('=');     //добавить смивол на ту же строку
             writer.flush();         // добавить все изменения в файл
 
         }catch (Exception e){
