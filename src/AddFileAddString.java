@@ -1,8 +1,7 @@
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileWriter;
 
-public class AddFile {
+public class AddFileAddString {
     public static void main(String[] args) {
         File file = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles");
 
