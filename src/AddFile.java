@@ -7,7 +7,7 @@ public class AddFile {
         File file = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles");
 
         try{
-            FileWriter writer = new FileWriter("listUser",false);    //создать новый файл
+            FileWriter writer = new FileWriter("listUser.txt",false);    //создать новый файл
             writer.write("name:Tomas , age:21 ");    //добавить строку
             writer.flush();         // добавить все изменения в файл
 
@@ -17,8 +17,5 @@ public class AddFile {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-
-
     }
 }
