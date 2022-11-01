@@ -8,7 +8,7 @@ public class ReadingFile {
         int c;
 
         // в с принимаем каждый символ из файла в формате числа из таблицы юникод
-        //если нету сивола вернет -1
+        //если нет символа вернет -1
 
         while((c = fileReader.read()) != -1) {
             System.out.print((char)c);
