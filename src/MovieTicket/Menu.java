@@ -1,6 +1,7 @@
 package MovieTicket;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class Menu {
     ArrayList<Ticket> ticket = new ArrayList();
 
     public void runTerminal() {
+        Ticket.initMoviesTicket();
         System.out.println("1 . посмотреть мои билеты");
         System.out.println("2 . посмотреть список фильмов");
         String answer = scanner.nextLine();
@@ -52,6 +54,7 @@ public class Menu {
                 if (n.equals("1")) {
                     if (balanc >= movie1.getPriceDay()){
                         balanc -= movie1.getPriceDay();
+                        check(movie1.getPriceDay());
                     }else {
                         System.out.println("не достаточно средств");
                         runTerminal();
@@ -60,6 +63,7 @@ public class Menu {
                 } else if (n.equals("2")) {
                     if (balanc >= movie1.getPriceEvening()){
                         balanc -= movie1.getPriceEvening();
+                        check(movie1.getPriceEvening());
                     }else {
                         System.out.println("не достаточно средств");
                         runTerminal();
@@ -69,14 +73,37 @@ public class Menu {
                     runTerminal();
                 }
 
-                check();
+
                 System.out.println("Спасибо за покупку");
             }
         }
     }
 
-    private void check() {
+    private void check(int price) {
+
+
         System.out.println("ведите имя");
+        String name = scanner.nextLine();
+
+        System.out.println("введите фамилию");
+        String surName = scanner.nextLine();
+
+        System.out.println("выберите место");
+        String place = "";
+        for (int i = 0; i < Ticket.getPlace().length; i++) {
+            if (Ticket.getPlace()[i] == 0){
+                System.out.println(Ticket.getPlace()[i] + "место свободно ");
+
+            }
+        }
+          place =  scanner.nextLine();
+
+
+
+
+
+
+
     }
 
     private void lockTicket() {
@@ -88,7 +115,7 @@ public class Menu {
         }
     }
 
-    private class Ticket {
+    private static class Ticket {
         private String moveName;
 
         private int id;
@@ -96,6 +123,16 @@ public class Menu {
         private int placeClients;
         private static int[] place = new int[30];
         private static int idStatic = 1;
+
+        public static int[] getPlace() {
+            return Arrays.copyOf(place,place.length);
+        }
+
+        public static  void  initMoviesTicket(){
+            for (int i = 0; i < place.length; i++) {
+                place[i] = ++i;
+            }
+        }
 
         public Ticket(String moveName, int price) {
             this.price = price;
