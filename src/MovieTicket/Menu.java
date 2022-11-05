@@ -16,23 +16,29 @@ public class Menu {
         System.out.println("2 . посмотреть список фильмов");
         String answer = scanner.nextLine();
         switch (answer) {
-            case "1" -> {lockTicket();}
-            case "2" -> {listMove();}
-            default -> {runTerminal();}
+            case "1" -> {
+                lockTicket();
+            }
+            case "2" -> {
+                listMove();
+            }
+            default -> {
+                runTerminal();
+            }
         }
 
     }
 
     private void listMove() {
-        Movie movie[]  = Movie.values();
+        Movie movie[] = Movie.values();
         for (Movie movie1 : movie) {
-            System.out.println(movie1.name()+ "(цена днем - " + movie1.getPriceDay() + " coin )"  + "(цена вечер " + movie1.getPriceEvening()+ "coin)");
+            System.out.println(movie1.name() + "(цена днем - " + movie1.getPriceDay() + " coin )" + "(цена вечер " + movie1.getPriceEvening() + "coin)");
         }
         shopTicket(movie);
 
     }
 
-    private void shopTicket(Movie movie [] ) {
+    private void shopTicket(Movie movie[]) {
         System.out.println("Введите название фильма");
         String nameMovie = scanner.nextLine();
         for (Movie movie1 : movie) {
@@ -41,28 +47,41 @@ public class Menu {
                 System.out.println("1 день - " + movie1.getPriceDay() + " coin");
                 System.out.println("2 вечер - " + movie1.getPriceEvening() + " coin");
                 System.out.println("введите цисло");
-
+                String n = scanner.nextLine();
+                if (n.equals("1")) {
+                    balanc -= movie1.getPriceDay();
+                } else if (n.equals("2")) {
+                    balanc -= movie1.getPriceEvening();
+                } else {
+                    runTerminal();
+                }
+                check();
+                System.out.println("Спасибо за покупку");
             }
         }
     }
 
-    private void  lockTicket(){
+    private void check() {
+        System.out.println("ведите имя");
+    }
+
+    private void lockTicket() {
         for (Ticket ticket1 : ticket) {
             System.out.println("Билет номер " + ticket1.id);
-            System.out.println("Фильм: " + ticket1.moveName );
-            System.out.println("Место: " + ticket1.placeClients );
+            System.out.println("Фильм: " + ticket1.moveName);
+            System.out.println("Место: " + ticket1.placeClients);
             System.out.println("--------------------------------");
         }
     }
 
-    private class Ticket{
-       private String moveName;
+    private class Ticket {
+        private String moveName;
 
-       private int id;
-       private int price;
-       private int placeClients;
-       private static int [] place = new int[30];
-       private static int idStatic = 1;
+        private int id;
+        private int price;
+        private int placeClients;
+        private static int[] place = new int[30];
+        private static int idStatic = 1;
 
         public Ticket(String moveName, int price) {
             this.price = price;
@@ -73,9 +92,9 @@ public class Menu {
 
         }
 
-        private int generatePlase(){
+        private int generatePlase() {
             for (int i = 0; i < place.length; i++) {
-                if(place[i] != 0){
+                if (place[i] != 0) {
                     place[i] = 1;
                     return place[i];
                 }
@@ -84,10 +103,7 @@ public class Menu {
         }
 
 
-
     }
-
-
 
 
 }
