@@ -14,4 +14,12 @@ public enum Movie {
 
     private int priceDay;
     private int priceEvening;
+
+    public int getPriceDay() {
+        return priceDay;
+    }
+
+    public int getPriceEvening() {
+        return priceEvening;
+    }
 }

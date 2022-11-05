@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.function.DoubleToIntFunction;
 
 public class Menu {
+    private int balanc = 5000;
     private Scanner scanner = new Scanner(System.in);
     ArrayList<Ticket> ticket = new ArrayList();
 
@@ -23,10 +24,26 @@ public class Menu {
     }
 
     private void listMove() {
-        Movie movie  = Movie.Boom;
-       for (Movie movie1:Movie.values()){
-           System.out.println(movie1);
-       }
+        Movie movie[]  = Movie.values();
+        for (Movie movie1 : movie) {
+            System.out.println(movie1.name()+ "(цена днем - " + movie1.getPriceDay() + " coin )"  + "(цена вечер " + movie1.getPriceEvening()+ "coin)");
+        }
+        shopTicket(movie);
+
+    }
+
+    private void shopTicket(Movie movie [] ) {
+        System.out.println("Введите название фильма");
+        String nameMovie = scanner.nextLine();
+        for (Movie movie1 : movie) {
+            if (nameMovie.equals(movie1)) {
+                System.out.println("Выберите время");
+                System.out.println("1 день - " + movie1.getPriceDay() + " coin");
+                System.out.println("2 вечер - " + movie1.getPriceEvening() + " coin");
+                System.out.println("введите цисло");
+
+            }
+        }
     }
 
     private void  lockTicket(){
