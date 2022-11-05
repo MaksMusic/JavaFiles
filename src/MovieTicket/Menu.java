@@ -48,13 +48,27 @@ public class Menu {
                 System.out.println("2 вечер - " + movie1.getPriceEvening() + " coin");
                 System.out.println("введите цисло");
                 String n = scanner.nextLine();
+
                 if (n.equals("1")) {
-                    balanc -= movie1.getPriceDay();
+                    if (balanc >= movie1.getPriceDay()){
+                        balanc -= movie1.getPriceDay();
+                    }else {
+                        System.out.println("не достаточно средств");
+                        runTerminal();
+                    }
+
                 } else if (n.equals("2")) {
-                    balanc -= movie1.getPriceEvening();
+                    if (balanc >= movie1.getPriceEvening()){
+                        balanc -= movie1.getPriceEvening();
+                    }else {
+                        System.out.println("не достаточно средств");
+                        runTerminal();
+                    }
                 } else {
+                    System.out.println("вы ввели не верную команду");
                     runTerminal();
                 }
+
                 check();
                 System.out.println("Спасибо за покупку");
             }
