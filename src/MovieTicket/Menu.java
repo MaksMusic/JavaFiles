@@ -1,6 +1,8 @@
 package MovieTicket;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,15 +16,17 @@ public class Menu {
 
     public void runTerminal() {
         Ticket.initMoviesTicket();
-        System.out.println("1 . посмотреть мои билеты");
-        System.out.println("2 . посмотреть список фильмов");
+        System.out.println("1  посмотреть мои билеты");
+        System.out.println("2  посмотреть список фильмов");
         String answer = scanner.nextLine();
         switch (answer) {
             case "1" -> {
                 lockTicket();
+                runTerminal();
             }
             case "2" -> {
                 listMove();
+                runTerminal();
             }
             default -> {
                 runTerminal();
@@ -44,7 +48,7 @@ public class Menu {
         System.out.println("Введите название фильма");
         String nameMovie = scanner.nextLine();
         for (Movie movie1 : movie) {
-            if (nameMovie.equals(movie1)) {
+            if (nameMovie.equals(movie1.name())) {
                 System.out.println("Выберите время");
                 System.out.println("1 день - " + movie1.getPriceDay() + " coin");
                 System.out.println("2 вечер - " + movie1.getPriceEvening() + " coin");
@@ -54,7 +58,7 @@ public class Menu {
                 if (n.equals("1")) {
                     if (balanc >= movie1.getPriceDay()){
                         balanc -= movie1.getPriceDay();
-                        check(movie1.getPriceDay());
+                        check(movie1.getPriceDay(),nameMovie);
                     }else {
                         System.out.println("не достаточно средств");
                         runTerminal();
@@ -63,7 +67,7 @@ public class Menu {
                 } else if (n.equals("2")) {
                     if (balanc >= movie1.getPriceEvening()){
                         balanc -= movie1.getPriceEvening();
-                        check(movie1.getPriceEvening());
+                        check(movie1.getPriceEvening(),nameMovie);
                     }else {
                         System.out.println("не достаточно средств");
                         runTerminal();
@@ -79,7 +83,7 @@ public class Menu {
         }
     }
 
-    private void check(int price) {
+    private void check(int price,String nameMovie) {
 
 
         System.out.println("ведите имя");
@@ -92,16 +96,24 @@ public class Menu {
         String place = "";
         for (int i = 0; i < Ticket.getPlace().length; i++) {
             if (Ticket.getPlace()[i] == 0){
-                System.out.println(Ticket.getPlace()[i] + "место свободно ");
+                System.out.println(i + " место свободно ");
 
             }
         }
-          place =  scanner.nextLine();
+        place =  scanner.nextLine();
+        Ticket ticket = new Ticket(nameMovie,price);
+        try {
+            FileWriter writer = new FileWriter("Check.txt",false);
+            writer.write("Билет номер " + ticket.id);
+            writer.write("\nимя " + name);
+            writer.write("\nфамилия  " + surName);
+            writer.write("\nместо   " + place);
+            writer.write("\nцена   " + price);
+            writer.flush();
 
-
-
-
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

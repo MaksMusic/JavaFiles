@@ -3,7 +3,7 @@ import java.io.FileWriter;
 
 public class AddFileAddString {
     public static void main(String[] args) {
-        File file = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles");
+       // File file = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles");
 
         try{
             FileWriter writer = new FileWriter("listUser.txt",false);    //создать новый файл
