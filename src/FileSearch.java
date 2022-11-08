@@ -1,16 +1,16 @@
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class FileSearch {
     public static void main(String[] args) {
 
         // создать новый каталог
-        File file1 = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\new");
+        File file1 = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\new\\1\\2\\3\\4\\5");
         System.out.println(file1.mkdir() + " mkdir");     //вернут true если папка создастя
+        System.out.println(file1.mkdirs() + " mkdir");     //вернут true если папки создастя
 
         // создать новый файл
-        File fileNew = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\file.txt");
+        File fileNew = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\","file.txt");
         try {  System.out.println(fileNew.createNewFile()); }catch (Exception e){ System.out.println("false add file");}
 
 
@@ -31,7 +31,7 @@ public class FileSearch {
         System.out.println(Arrays.toString(category.listFiles())); // возвращает массив файлов и подкаталогов, типа File
 
         //проверки файлов или катлогов
-        System.out.println(fileNew.exists() + "exist");
+        System.out.println(fileNew.exists() + " exist");      //проверить есть ли файл или папка
         System.out.println(file.isFile());                   //проверить является ли файлом или папкой
         System.out.println(file.isDirectory());             //проверить является ли папкой или папкой
         System.out.println(file.isHidden());                //проверить является ли файл скрытым
