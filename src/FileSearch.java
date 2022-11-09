@@ -4,7 +4,7 @@ import java.util.Arrays;
 public class FileSearch {
     public static void main(String[] args) {
 
-        // создать новый каталог
+    // создать новый каталог
         File file1 = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\new\\1\\2\\3\\4\\5");
         System.out.println(file1.mkdir() + " mkdir");     //вернут true если папка создастя
         System.out.println(file1.mkdirs() + " mkdir");     //вернут true если папки создастя
@@ -46,8 +46,12 @@ public class FileSearch {
 
 
 
+        File fileThis = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\1.png");
         searchFileType(category);
+        System.out.println("-------------");
+        listFilePrint(fileThis.getParentFile());
     }
+
 
 
     //поиск файла по расширению
@@ -58,5 +62,12 @@ public class FileSearch {
             }
         }
 
+    }
+
+    //показать все файлы которые находятся с эти файлом в каталоге
+    public static void listFilePrint(File files){
+        for (File file : files.listFiles()) {
+            System.out.println(file.getName());
+        }
     }
 }
