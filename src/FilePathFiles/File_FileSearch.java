@@ -1,8 +1,12 @@
+package FilePathFiles;
+
 import java.io.File;
 import java.util.Arrays;
 
-public class FileSearch {
-    public static void main(String[] args) {
+public class File_FileSearch {
+    public static void main(String[] args) throws Exception  {
+        File fileCategory = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\FilePathFiles");
+        System.out.println(fileCategory.mkdir());
 
     // создать новый каталог
         File file1 = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\new\\1\\2\\3\\4\\5");
