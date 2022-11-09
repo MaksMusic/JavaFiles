@@ -38,6 +38,7 @@ public class FileSearch {
 
         // данные о каталогах и файлах
         System.out.println(file.getName());               //название файла и его тип
+        System.out.println(file.getAbsolutePath());       //полный путь к  файлу
         System.out.println(file.getParent());             // полный путь папки где находится папка или файл
         System.out.println(file.lastModified());          // возвращает время последнего изменения файла или каталога
         System.out.println(file.length());                //возвращает размер файла в байтах
