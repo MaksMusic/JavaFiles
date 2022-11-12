@@ -4,18 +4,23 @@ import java.io.File;
 import java.util.Arrays;
 
 public class File_FileSearch {
-    public static void main(String[] args) throws Exception  {
+    public static void main(String[] args){
+        //Класс File работа с каталогами
+
         File fileCategory = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\FilePathFiles");
         System.out.println(fileCategory.mkdir());
 
-    // создать новый каталог
+        // создать новый каталог (несколько каталогов)
         File file1 = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\new\\1\\2\\3\\4\\5");
         System.out.println(file1.mkdir() + " mkdir");     //вернут true если папка создастя
-        System.out.println(file1.mkdirs() + " mkdir");     //вернут true если папки создастя
 
         // создать новый файл
-        File fileNew = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\","file.txt");
-        try {  System.out.println(fileNew.createNewFile()); }catch (Exception e){ System.out.println("false add file");}
+        File fileNew = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\", "file.txt");
+        try {
+            System.out.println(fileNew.createNewFile());
+        } catch (Exception e) {
+            System.out.println("false add file");
+        }
 
 
         //переименовать файл или категоию
@@ -23,9 +28,8 @@ public class File_FileSearch {
         System.out.println(file1.renameTo(file2) + " rename");
 
 
-
         //ссылка на каталог
-        File category = new File ("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src");
+        File category = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src");
         //ссылка на файл
         File file = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\text.txt");
 
@@ -48,8 +52,6 @@ public class File_FileSearch {
         System.out.println(file.length());                //возвращает размер файла в байтах
 
 
-
-
         File fileThis = new File("C:\\Users\\maksm\\IdeaProjects\\JavaFiles\\src\\1.png");
         searchFileType(category);
         System.out.println("-------------");
@@ -57,11 +59,10 @@ public class File_FileSearch {
     }
 
 
-
     //поиск файла по расширению
-    public static void searchFileType(File category){
+    public static void searchFileType(File category) {
         for (File fileStr : category.listFiles()) {
-            if ((fileStr != null) && (fileStr.getName().endsWith(".txt"))){
+            if ((fileStr != null) && (fileStr.getName().endsWith(".txt"))) {
                 System.out.println(fileStr.getName());
             }
         }
@@ -69,7 +70,7 @@ public class File_FileSearch {
     }
 
     //показать все файлы которые находятся с эти файлом в каталоге
-    public static void listFilePrint(File files){
+    public static void listFilePrint(File files) {
         for (File file : files.listFiles()) {
             System.out.println(file.getName());
         }
