@@ -1,4 +1,4 @@
-package MovieTicket;
+package ProjectMovieTicket;
 
 public enum Movie {
     Doom(400,800),

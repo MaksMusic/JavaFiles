@@ -1,13 +1,10 @@
-package MovieTicket;
+package ProjectMovieTicket;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.function.DoubleToIntFunction;
 
 public class Menu {
     private int balanc = 5000;
